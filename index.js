@@ -2,6 +2,8 @@ import "dotenv/config";
 import express from 'express';
 import cors from 'cors';
 import urlShortenerRouter from './url_shortener.js';
+import mongoose from "mongoose";
+import connection_string from "./database.js";
 const app = express();
 
 // Basic Configuration
@@ -25,6 +27,7 @@ app.get('/api/hello', function(req, res) {
 
 app.use('/api/shorturl', urlShortenerRouter)
 
-app.listen(port, function() {
+app.listen(port, async function() {
+  await mongoose.connect(connection_string);
   console.log(`Listening on port ${port}`);
 });

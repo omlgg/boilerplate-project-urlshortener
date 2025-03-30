@@ -2,13 +2,9 @@ import mongoose, { mongo } from 'mongoose';
 import express from 'express';
 import dns from 'node:dns';
 import nodeurl from 'node:url';
-import dotenv from "dotenv";
-dotenv.config();
 const router = new express.Router();
 
-const dbusername = process.env.DBUSERNAME;
-const dbpassword = process.env.DBPASSWORD;
-await mongoose.connect(`mongodb+srv://${dbusername}:${dbpassword}@cluster0.pzim1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`);
+
 
 let urlSchema = mongoose.Schema({
     url: String
